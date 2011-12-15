@@ -16,5 +16,7 @@
     "node": ">=0.4"
   },
   "dependencies": {},
-  "devDependencies": {}
+  "devDependencies": {
+    "mocha": "*"
+  }
 }
