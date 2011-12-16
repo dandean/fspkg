@@ -12,7 +12,7 @@ For example, I use `fspkg` with <code>[modulr-node](https://github.com/tobie/mod
 var MyView = Backbone.View.extend({
     ...
     render: function() {
-      var template = require('views')[layouts/index.mustache];
+      var template = require('views')['layouts/index.mustache'];
       var html = Mustache.to_html(template, this.model);
       this.el.html(html);
     },
