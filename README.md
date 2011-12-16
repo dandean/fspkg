@@ -74,6 +74,38 @@ Only .mustache, .html, .htm and .txt files pass this filter, and all files withi
 ```
 
 
+Example
+-------
+
+```js
+var fs = require('fs');
+var fspkg = require('fspkg');
+
+var builder = new fspkg.SyncBuilder({
+  filter: function(path) {
+    // Include .png files...
+    if (path && path.match(/\.png$/)) return true;
+    return fspkg.Filter.Default(path);
+  },
+      
+  // Use the Data URI processor for .png files
+  '.png': function(path) {
+    return fspkg.SyncBuilder.Processor.DataURI(path);
+  }
+});
+
+// Assuming you have a "stuff" directory with PNGs and other
+// files that you want to package up:
+var result = builder.build('./stuff');
+
+// Write the module to the current directory as "assets.js".
+fs.writeFileSync('./assets.js', result);
+
+// Now you can require() the file and use it for whatever.
+console.log(require('./assets.js'));
+```
+
+
 Install
 -------
 
