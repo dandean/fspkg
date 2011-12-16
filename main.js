@@ -14,11 +14,12 @@ var SyncBuilder = require('./lib/sync-builder');
  * - options (Object): Options to use when processing the files in `path`.
  * - cb (Function(e, result)): Callback function which is given the result.
  *
- * Processes the file-system package at `path`.
+ * NOT IMPLEMENTED. Processes the file-system package at `path`.
 **/
 var fspkg = module.exports = function(path, options, cb) {
-  var builder = new Builder(options);
-  builder.build(path, cb);
+  throw new Error('Not Implemented. Use `SyncBuilder` class for now.')
+  // var builder = new Builder(options);
+  // builder.build(path, cb);
 }
 
 fspkg.Builder = Builder;
