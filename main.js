@@ -1,6 +1,7 @@
 var fs = require('fs');
 var path = require('path');
 var util = require('util');
+var Filter = require('./lib/filter');
 var Builder = require('./lib/builder');
 var SyncBuilder = require('./lib/sync-builder');
 
@@ -22,5 +23,6 @@ var fspkg = module.exports = function(path, options, cb) {
   // builder.build(path, cb);
 }
 
+fspkg.Filter = Filter;
 fspkg.Builder = Builder;
 fspkg.SyncBuilder = SyncBuilder;
