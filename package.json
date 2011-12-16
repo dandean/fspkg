@@ -15,7 +15,9 @@
   "engines": {
     "node": ">=0.4"
   },
-  "dependencies": {},
+  "dependencies": {
+    "mime": "*"
+  },
   "devDependencies": {
     "mocha": "*"
   }
