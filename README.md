@@ -24,7 +24,7 @@ var MyView = Backbone.View.extend({
 API
 ---
 
-`fspkg` exposes both sync and async API's.
+`fspkg` exposes both async and sync API's.
 
 ### Main Function ###
 
@@ -58,7 +58,7 @@ module.exports = {
 ```
 
 
-### Builder ###
+### Builder (async) ###
 
 ```text
 new Builder([options])
