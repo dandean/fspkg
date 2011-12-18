@@ -24,7 +24,78 @@ var MyView = Backbone.View.extend({
 API
 ---
 
-`fspkg` exposes both sync and async API's. The async API is still in progess, so only the sync is currently documented.
+`fspkg` exposes both sync and async API's.
+
+### Main Function ###
+
+The module export is a shortcut to instantiating a new `Builder` and immediately
+its `build` method, packaging the file-system at `path`.
+
+```text
+fspkg(path, [options,] cb)
+- path (String): Path to the file to package.
+- options (Object): Options to configure the builder.
+- cb (Function(e, content)): Callback function which is given the file content.
+```
+
+#### Example ####
+
+```js
+require('fspkg')('./views', function(e, pkg) {
+  console.log(pkg);
+});
+```
+
+The above example would print a CommonJS module similar to this:
+
+```js
+module.exports = {
+  "index.mustache": "<div>\n  Welcome {{username}}!\n</div> ...",
+  "about/index.mustache": "<h1>This {{expletive}} is awesome</h1> ...",
+  "about/contact.mustache": "<h1>Contact Us</h1>\n Phone: {{phone}}..."
+  // etc...
+}
+```
+
+
+### Builder ###
+
+```text
+new Builder([options])
+- options (Object): Options to configure the builder.
+
+Creates a new Builder instance. Available Options:
+
+  * filter (Function(String path)): A function which filters file paths found in the
+      directory to be packaged. Should return `true` to include the file, `false` to
+      exclude it. Defaults to `fspkg.Filter.Default` when `filter` option is not
+      provided.
+
+  * format (String): The format to return from the `build` method:
+      "module", "json" or "object". Defaults to "module";
+
+
+
+Builder#build(path, cb)
+- path (String): The root path of the package.
+- cb (Function(e, result)): Callback function which is given the result.
+
+Builds the directory or file `path`. `result` is a package in the configured format.
+
+
+
+Builder.Processor.*(path, cb) -> String
+- path (String): Path to the file to package.
+- cb (Function(e, content)): Callback function which is given the file content.
+
+All processors have the same signature: they take a file path and callback function.
+The file content is encoded file as a String and passed to `cb` as the 2nd argument.
+
+Builder.Processor.Default(path, cb)
+Builder.Processor.Base64(path, cb)
+Builder.Processor.DataURI(path, cb)
+```
+
 
 ### SyncBuilder ###
 
@@ -47,7 +118,7 @@ Creates a new SyncBuilder instance. Available Options:
 SyncBuilder#build(path) -> ?
 - path (String): The root path of the package.
 
-Build the directory or file `path`, returning a package in the configured format.
+Builds the directory or file `path`, returning a package in the configured format.
 
 
 
@@ -111,11 +182,6 @@ Install
 
 `npm install fspkg`
 
-
-TODO
-----
-
-Async Builder and root module function.
 
 
 License
