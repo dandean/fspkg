@@ -41,15 +41,15 @@ describe('Module', function(){
       assert.ok(result.indexOf('module.exports = {') === 0);
     });
 
-    it('should should have a `Builder` property which is a function', function(){
+    it('should have a `Builder` property which is a function', function(){
       assert.ok(fspkg.Builder instanceof Function);
     });
 
-    it('should should have a `SyncBuilder` property which is a function', function(){
+    it('should have a `SyncBuilder` property which is a function', function(){
       assert.ok(fspkg.SyncBuilder instanceof Function);
     });
 
-    it('should should have a `Filter` property', function(){
+    it('should have a `Filter` property', function(){
       assert.ok('Filter' in fspkg);
     });
   });
@@ -65,7 +65,7 @@ describe('Module', function(){
       });
     });
 
-    it('should should include "html", "htm", "mustache" and "txt" files by default', function() {
+    it('should include "html", "htm", "mustache" and "txt" files by default', function() {
       // console.log(result, Object.keys(result), Object.keys(result).length);
       var count = Object.keys(result).length;
       assert.equal(5, count, 'Should have found 5 files but found ' + count);
@@ -135,7 +135,7 @@ describe('Module', function(){
     var pkgr1 = new fspkg.SyncBuilder({ format: 'object' });
     var result1 = pkgr1.build('./test/scaffold');
 
-    it('should should include "html", "htm", "mustache" and "txt" files by default', function() {
+    it('should include "html", "htm", "mustache" and "txt" files by default', function() {
       var count = Object.keys(result1).length;
       assert.equal(5, count, 'Should have found 5 files but found ' + count);
       assert.ok('index.htm' in result1);
