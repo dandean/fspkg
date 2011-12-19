@@ -10,6 +10,7 @@
     "url": "git://github.com/dandean/fspkg.git"
   },
   "main": "main",
+  "bin" : { "fspkg" : "./bin/fspkg.js" },
   "scripts": {
     "test": "make test"
   },
