@@ -3,14 +3,14 @@
   "name": "fspkg",
   "description": "Export your file system as a CommonJS module or JSON object",
   "tags" : ["json", "fs", "file", "fileify", "datauri", "mustache", "commonjs"],
-  "version": "0.1.0",
+  "version": "0.2.0",
   "homepage": "https://github.com/dandean/fspkg",
   "repository": {
     "type": "git",
     "url": "git://github.com/dandean/fspkg.git"
   },
   "main": "main",
-  "bin" : { "fspkg" : "./bin/fspkg.js" },
+  "bin" : { "fspkg" : "./bin/fspkg" },
   "scripts": {
     "test": "make test"
   },
