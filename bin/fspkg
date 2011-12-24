@@ -19,10 +19,7 @@ program
   .option('-s, --save-path [savePath]', 'save path: prints to stdout if not given')
   .option(
     '-e, --extensions [extensions]',
-    'file extensions to include in the package; default is "mustache,html,htm,txt"',
-    function(list) {
-      return list.split(',').map(function(ext) { return ext.trim(); })
-    }
+    'file extensions to include in the package; default is "mustache,html,htm,txt"'
   )
   .parse(process.argv);
 
@@ -52,15 +49,8 @@ var filter;
 
 if (program.extensions) {
   // Create a filter based on the provided file extensions.
-  filter = function(path) {
-    var regex = new RegExp('\\w\\.(' + program.extensions.map(function(e) { return e.trim(); }).join('|') + ')$', "i");
-    // path must be given...
-    return path
-      // include files of specified type
-      && regex.test(path)
-      // exclude anything in a .git or node_modules directory
-      && path.match(/\/(\.git|node_modules)\//) === null;
-  }
+  filter = fspkg.Filter.createExtensionFilter(program.extensions)
+
 } else {
   // Extensions not given, use the default filter.
   filter = fspkg.Filter.Default;
