@@ -20,9 +20,23 @@ var MyView = Backbone.View.extend({
 });
 ```
 
+Command-line API
+----------------
 
-API
----
+```sh
+Usage: fspkg [options] <source>
+
+  Options:
+
+    -h, --help                     output usage information
+    -V, --version                  output the version number
+    -s, --save-path [savePath]     save path: prints to stdout if not given
+    -e, --extensions [extensions]  file extensions to include in the package; default is "mustache,html,htm,txt"
+```
+
+
+Node.js API
+-----------
 
 `fspkg` exposes both async and sync API's.
 
@@ -66,13 +80,17 @@ new Builder([options])
 
 Creates a new Builder instance. Available Options:
 
-  * filter (Function(String path)): A function which filters file paths found in the
-      directory to be packaged. Should return `true` to include the file, `false` to
-      exclude it. Defaults to `fspkg.Filter.Default` when `filter` option is not
-      provided.
+  * filter (Function|String): A function or string which filters file paths
+    found in the directory to be packaged.
+    
+    If a `String`, it should be a comma-separated list of file extensions,
+    such as "foo,bar,baz". If a `Function`, should return `true` to include
+    the file, `false` to exclude it.
+    
+    Defaults to "mustache,html,htm,txt".
 
   * format (String): The format to return from the `build` method:
-      "module", "json" or "object". Defaults to "module";
+    "module", "json" or "object". Defaults to "module";
 
 
 
@@ -105,13 +123,17 @@ new SyncBuilder([options])
 
 Creates a new SyncBuilder instance. Available Options:
 
-  * filter (Function(String path)): A function which filters file paths found in the
-      directory to be packaged. Should return `true` to include the file, `false` to
-      exclude it. Defaults to `fspkg.Filter.Default` when `filter` option is not
-      provided.
+  * filter (Function|String): A function or string which filters file paths
+    found in the directory to be packaged.
+    
+    If a `String`, it should be a comma-separated list of file extensions,
+    such as "foo,bar,baz". If a `Function`, should return `true` to include
+    the file, `false` to exclude it.
+    
+    Defaults to "mustache,html,htm,txt".
 
   * format (String): The format to return from the `build` method:
-      "module", "json" or "object". Defaults to "module";
+    "module", "json" or "object". Defaults to "module";
 
 
 
@@ -181,6 +203,8 @@ Install
 -------
 
 `npm install fspkg`
+
+To install the command-line utility, add the `-g` flag during installation.
 
 
 
