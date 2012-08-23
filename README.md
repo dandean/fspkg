@@ -1,3 +1,4 @@
+[![build status](https://secure.travis-ci.org/dandean/fspkg.png)](http://travis-ci.org/dandean/fspkg)
 fspkg: File System Packager
 =============================
 
