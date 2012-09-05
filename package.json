@@ -18,10 +18,10 @@
     "node": ">=0.4"
   },
   "dependencies": {
-    "mime": "*",
-    "commander": "*"
+    "mime": "1.2.7",
+    "commander": "1.0.4"
   },
   "devDependencies": {
-    "mocha": "*"
+    "mocha": "1.4.2"
   }
 }
