@@ -70,7 +70,7 @@ var result = builder.build(source);
 if (program.savePath) {
   // Save the result to a file.
   fs.writeFileSync(program.savePath, result);
-  process.stdout.write('Package saved to `' + program.savePath + '`.');
+  process.stderr.write('Package saved to `' + program.savePath + '`.');
 
 } else {
   // Write the result to stdout for possible piping to other processes.
